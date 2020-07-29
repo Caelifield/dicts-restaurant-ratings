@@ -21,7 +21,7 @@ def restaurant_ratings(filename):
         
     sorted_ratings = sorted(ratings)
 
-    for restaurant in ratings:
+    for restaurant in sorted_ratings:
         print(f"{restaurant} is rated at {ratings[restaurant]}")
 
-        
+restaurant_ratings("scores.txt")        
