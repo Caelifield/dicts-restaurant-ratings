@@ -19,15 +19,34 @@ def restaurant_ratings(filename):
         restaurant_name, rating = split_line
         ratings[restaurant_name] = rating
 
-    user_restaurant = input("Input restaurant to rate: ")
-    user_rating = input("Input rating: ")
-    ratings[user_restaurant] = user_rating
+    while True:
+        initial_input = input("""Would you like to:
 
-    sorted_ratings = sorted(ratings)
+        [S]ee all ratings
+        [A]dd a rating
+        [Q]uit
 
-    for restaurant in sorted_ratings:
-        print(f"{restaurant} is rated at {ratings[restaurant]}")
-    
+        >
+        """)
+        if initial_input == "S":
+            sorted_ratings = sorted(ratings)
+            for restaurant in sorted_ratings:
+                print(f"{restaurant} is rated at {ratings[restaurant]}")
+            sorted_ratings = sorted(ratings)
+
+            for restaurant in sorted_ratings:
+                print(f"{restaurant} is rated at {ratings[restaurant]}")
+        elif initial_input == "A":
+            user_restaurant = input("Input restaurant to rate: ")
+            user_rating = input("Input rating: ")
+            if user_rating in range(1,6):
+                ratings[user_restaurant] = user_rating
+            else:
+                print("Rating must be a number from 1 to 5.")
+        elif initial_input == "Q":
+            break
+   
     the_file.close()
 
-restaurant_ratings("scores.txt")        
+restaurant_ratings("scores.txt")
+    
