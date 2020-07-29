@@ -18,10 +18,16 @@ def restaurant_ratings(filename):
         split_line = line.split(":")
         restaurant_name, rating = split_line
         ratings[restaurant_name] = rating
-        
+
+    user_restaurant = input("Input restaurant to rate: ")
+    user_rating = input("Input rating: ")
+    ratings[user_restaurant] = user_rating
+
     sorted_ratings = sorted(ratings)
 
     for restaurant in sorted_ratings:
         print(f"{restaurant} is rated at {ratings[restaurant]}")
+    
+    the_file.close()
 
 restaurant_ratings("scores.txt")        
